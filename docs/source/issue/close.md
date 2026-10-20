@@ -1,0 +1,25 @@
+# `glab issue close`
+
+Close an issue.
+
+## Synopsis
+
+You can use a full GitLab URL instead of an ID.
+
+```plaintext
+glab issue close [<id> | <url>] [flags]
+```
+
+## Examples
+
+```console
+glab issue close 123
+glab issue close https://gitlab.com/NAMESPACE/REPO/-/issues/123
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

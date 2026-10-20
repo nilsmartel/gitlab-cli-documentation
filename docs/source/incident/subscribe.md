@@ -1,0 +1,33 @@
+# `glab incident subscribe`
+
+Subscribe to an incident.
+
+## Synopsis
+
+You receive notifications when the incident is updated, commented on,
+or has its state changed.
+
+```plaintext
+glab incident subscribe <id> [flags]
+```
+
+## Aliases
+
+```plaintext
+sub
+```
+
+## Examples
+
+```console
+glab incident subscribe 123
+glab incident sub 123
+glab incident subscribe https://gitlab.com/OWNER/REPO/-/issues/incident/123
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

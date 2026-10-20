@@ -1,0 +1,45 @@
+# `glab repo search`
+
+Search for GitLab repositories and projects by name.
+
+## Synopsis
+
+Searches every project visible to you for a string in the project
+name. Provide the query with `--search`, and use `-F json` for
+machine-readable output.
+
+```plaintext
+glab repo search [flags]
+```
+
+## Aliases
+
+```plaintext
+find
+lookup
+```
+
+## Examples
+
+```console
+glab project search -s "title"
+glab repo search -s "title"
+glab project find -s "title"
+glab project lookup -s "title"
+```
+
+## Options
+
+```plaintext
+      --jq string       Filter JSON output with a jq expression.
+  -F, --output string   Format output as: text, json. (default "text")
+  -p, --page int        Page number. (default 1)
+  -P, --per-page int    Number of items to list per page. (default 20)
+  -s, --search string   A string contained in the project name.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```

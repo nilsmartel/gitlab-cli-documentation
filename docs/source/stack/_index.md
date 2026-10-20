@@ -1,0 +1,58 @@
+# `glab stack`
+
+Create, manage, and work with stacked diffs. (EXPERIMENTAL)
+
+## Synopsis
+
+A stack is a series of small, dependent merge requests that together deliver a feature. Reviewers can review and merge earlier changes while you keep building on top of them.
+
+Locally, each diff in the stack is one commit on its own branch, built on the branch of the previous diff. When you run `glab stack sync`, each diff becomes a merge request that targets the branch of the previous diff. The first diff targets the base branch.
+
+The `glab stack` commands act on the stack you last created or switched to, regardless of which branch you have checked out.
+
+This feature is an experiment and is not ready for production use.
+It might be unstable or removed at any time.
+For more information, see
+<https://docs.gitlab.com/policy/development_stages_support/>.
+
+## Aliases
+
+```plaintext
+stacks
+```
+
+## Examples
+
+```console
+glab stack create cool-new-feature
+glab stack sync
+```
+
+## Options
+
+```plaintext
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```
+
+## Subcommands
+
+- [`amend`](amend.md)
+- [`create`](create.md)
+- [`delete`](delete.md)
+- [`first`](first.md)
+- [`infer`](infer.md)
+- [`last`](last.md)
+- [`list`](list.md)
+- [`move`](move.md)
+- [`next`](next.md)
+- [`prev`](prev.md)
+- [`reorder`](reorder.md)
+- [`save`](save.md)
+- [`switch`](switch.md)
+- [`sync`](sync.md)

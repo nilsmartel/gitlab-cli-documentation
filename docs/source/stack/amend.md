@@ -1,0 +1,54 @@
+# `glab stack amend`
+
+Save your changes to an existing diff. (EXPERIMENTAL)
+
+## Synopsis
+
+Adds your changes to the diff you have checked out. Its merge request updates the next time you run `glab stack sync`, which also rebases the diffs after it.
+
+To create a new diff from your changes instead, use `glab stack save`.
+
+This feature is an experiment and is not ready for production use.
+It might be unstable or removed at any time.
+For more information, see
+<https://docs.gitlab.com/policy/development_stages_support/>.
+
+```plaintext
+glab stack amend [flags]
+```
+
+## Examples
+
+```console
+# Amend diff with currently staged changes
+glab stack amend -m "Fix a function"
+
+# Add specified file to staged changes and amend diff
+glab stack amend newfile -m "forgot to add this"
+
+# Add all tracked files to staged changes and amend diff
+glab stack amend -a -m "fixed a function in exisiting file"
+
+# Add all tracked and untracked files to staged changes and amend diff
+glab stack amend . -m "refactored file into new files"
+
+# Reword the commit message without adding any files
+glab stack amend --reword -m "updated commit message"
+```
+
+## Options
+
+```plaintext
+  -a, --all                  Automatically stage modified and deleted tracked files.
+  -d, --description string   A description of the change.
+  -m, --message string       Alias for the description flag.
+      --no-verify            Bypass the pre-commit and commit-msg hooks of git-commit(1).
+      --reword               Only update the commit message without staging any files.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

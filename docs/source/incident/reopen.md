@@ -1,0 +1,32 @@
+# `glab incident reopen`
+
+Reopen a resolved incident.
+
+## Synopsis
+
+You can use a full GitLab URL instead of an ID.
+
+```plaintext
+glab incident reopen [<id> | <url>] [flags]
+```
+
+## Aliases
+
+```plaintext
+open
+```
+
+## Examples
+
+```console
+glab incident reopen 123
+glab incident open 123
+glab incident reopen https://gitlab.com/NAMESPACE/REPO/-/issues/incident/123
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

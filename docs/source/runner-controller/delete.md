@@ -1,0 +1,39 @@
+# `glab runner-controller delete`
+
+Delete a runner controller. (EXPERIMENTAL)
+
+## Synopsis
+
+Prompts for confirmation before deletion. Use `--force` to skip the
+confirmation prompt in non-interactive contexts.
+
+This feature is an experiment and is not ready for production use.
+It might be unstable or removed at any time.
+For more information, see
+<https://docs.gitlab.com/policy/development_stages_support/>.
+
+```plaintext
+glab runner-controller delete <id> [flags]
+```
+
+## Examples
+
+```console
+# Delete a runner controller (with confirmation prompt)
+glab runner-controller delete 42
+
+# Delete a runner controller without confirmation
+glab runner-controller delete 42 --force
+```
+
+## Options
+
+```plaintext
+  -f, --force   Skip confirmation prompt.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```

@@ -1,0 +1,34 @@
+# `glab issue board view`
+
+View project issue board.
+
+## Synopsis
+
+Opens an interactive view of the project's issue boards in your
+terminal, where you can browse issues by list.
+
+```plaintext
+glab issue board view [flags]
+```
+
+## Examples
+
+```console
+glab issue board view
+```
+
+## Options
+
+```plaintext
+  -a, --assignee string    Filter board issues by assignee username.
+  -l, --labels strings     Filter board issues by labels. Multiple labels can be comma-separated or specified by repeating the flag.
+  -m, --milestone string   Filter board issues by milestone.
+      --paginate           Make additional HTTP requests to retrieve all board issues.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository using the OWNER/REPO format or the project ID. Supports group namespaces.
+```

@@ -1,0 +1,59 @@
+# `glab packages list`
+
+List packages in a project's package registry.
+
+## Synopsis
+
+Packages of all types (generic, npm, maven, etc.) are returned. Use
+`--package-type` to filter by type and `--name` to filter by name. Use
+`--page` and `--per-page` to paginate the result.
+
+By default, packages are listed for the current project. Use `--repo`
+to target another project.
+
+```plaintext
+glab packages list [flags]
+```
+
+## Aliases
+
+```plaintext
+ls
+```
+
+## Examples
+
+```console
+# List all packages in the current project
+glab packages list
+
+# Use the 'ls' alias
+glab packages ls
+
+# Filter by package name
+glab packages list --name my-package
+
+# List a specific page with a custom page size
+glab packages list --page 2 --per-page 10
+
+# List packages from another project
+glab packages list -R owner/repo
+
+```
+
+## Options
+
+```plaintext
+      --jq string             Filter JSON output with a jq expression.
+  -n, --name string           Filter packages by name (substring match).
+      --package-type string   Filter packages by type. One of: cargo, composer, conan, debian, generic, golang, helm, maven, ml_model, npm, nuget, pypi, rpm, rubygems, terraform_module.
+  -p, --page int              Page number. (default 1)
+  -P, --per-page int          Number of items to list per page. (default 30)
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

@@ -1,0 +1,30 @@
+# `glab cluster agent`
+
+Manage GitLab Agents for Kubernetes.
+
+## Synopsis
+
+Register new agents, configure existing ones, manage their tokens and kubeconfig
+entries, and check configuration files for deprecated settings.
+
+## Options
+
+```plaintext
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```
+
+## Subcommands
+
+- [`bootstrap`](bootstrap.md)
+- [`check-manifest-usage`](check-manifest-usage.md)
+- [`get-token`](get-token.md)
+- [`list`](list.md)
+- [`token`](token/_index.md)
+- [`token-cache`](token-cache/_index.md)
+- [`update-kubeconfig`](update-kubeconfig.md)

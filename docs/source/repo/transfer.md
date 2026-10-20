@@ -1,0 +1,32 @@
+# `glab repo transfer`
+
+Transfer a repository to a new namespace.
+
+## Synopsis
+
+Moves a project to a different group or user namespace. Specify the
+destination with `--target-namespace`. You must have permission to
+create projects in the target namespace.
+
+```plaintext
+glab repo transfer [repo] [flags]
+```
+
+## Examples
+
+```console
+glab repo transfer profclems/glab --target-namespace notprofclems
+```
+
+## Options
+
+```plaintext
+  -t, --target-namespace string   The namespace where your project should be transferred to.
+  -y, --yes                       Warning: Skip confirmation prompt and force transfer operation. Transfer cannot be undone.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```

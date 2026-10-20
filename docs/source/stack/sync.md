@@ -1,0 +1,55 @@
+# `glab stack sync`
+
+Push the stack to GitLab, and create or update its merge requests. (EXPERIMENTAL)
+
+## Synopsis
+
+Updates GitLab to match your local stack:
+
+- Creates a merge request for each diff without one, unless `--skip-mr-creation` or `--skip-push` is set. Each merge request targets the branch of the previous diff, or the base branch for the first diff.
+- Pulls changes made on GitLab, such as applied suggestions, into any diff whose branch is behind its remote.
+- If you amended a diff since the last sync, rebases the diffs after it. Then, unless `--skip-push` is set, force-pushes the stack's branches.
+- Removes diffs with merged merge requests and deletes their local branches. Keeps diffs with closed merge requests.
+- If you're working in a fork, asks whether to push to the fork or the upstream repository.
+- With `--update-base`, rebases the stack onto the latest version of the base branch. Then, unless `--skip-push` is set, force-pushes the stack's branches.
+
+This feature is an experiment and is not ready for production use.
+It might be unstable or removed at any time.
+For more information, see
+<https://docs.gitlab.com/policy/development_stages_support/>.
+
+```plaintext
+glab stack sync [flags]
+```
+
+## Examples
+
+```console
+glab stack sync
+glab stack sync --no-verify
+glab stack sync --update-base
+glab stack sync --skip-push
+glab stack sync --skip-mr-creation
+glab stack sync --assignee user1,user2
+glab stack sync --label bug,priority::high
+glab stack sync --reviewer user1 --reviewer user2
+```
+
+## Options
+
+```plaintext
+  -a, --assignee usernames   Assign merge request to people by their usernames. Multiple usernames can be comma-separated or specified by repeating the flag.
+  -l, --label name           Add label by name. Multiple labels can be comma-separated or specified by repeating the flag.
+      --no-verify            Bypass the pre-push hook. (See githooks(5) for more information.)
+      --reviewer usernames   Request review from users by their usernames. Multiple usernames can be comma-separated or specified by repeating the flag.
+      --skip-mr-creation     Skip creating merge requests for branches that don't have one yet.
+      --skip-push            Rebase the stack locally without pushing branches or creating merge requests. Still fetches from the remote and calls the GitLab API.
+      --update-base          Rebase the stack onto the latest version of the base branch.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

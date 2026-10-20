@@ -1,0 +1,40 @@
+# `glab govern doctor`
+
+Diagnose AI agent governance configuration, authentication, and hook setup. (EXPERIMENTAL)
+
+## Synopsis
+
+Check that AI agent governance is correctly configured on this machine.
+
+Verifies:
+
+- Authentication: glab is authenticated with a valid token
+- glab in PATH: the binary is findable so hooks will work
+- Claude Code hooks: Stop and SessionEnd hooks are installed
+- API connectivity: can reach the GitLab API
+- Fallback periodic sync: whether the scheduled job is installed and loaded, whether the glab binary it runs still exists and is the same build as this glab, and the result of its last run
+
+Outputs a clear remediation command for any check that fails.
+
+This feature is an experiment and is not ready for production use.
+It might be unstable or removed at any time.
+For more information, see
+<https://docs.gitlab.com/policy/development_stages_support/>.
+
+```plaintext
+glab govern doctor [flags]
+```
+
+## Examples
+
+```console
+# Check AI agent governance configuration on this machine
+$ glab govern doctor
+
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```

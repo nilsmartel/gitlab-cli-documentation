@@ -1,0 +1,35 @@
+# `glab mr close`
+
+Close a merge request.
+
+## Synopsis
+
+Defaults to the currently checked-out branch. You can close
+multiple merge requests by passing multiple IDs or branch names.
+
+```plaintext
+glab mr close [<id> | <branch>] [flags]
+```
+
+## Examples
+
+```console
+glab mr close 1
+
+# Close multiple merge requests at once
+glab mr close 1 2 3 4
+
+# Use the checked-out branch
+glab mr close
+
+glab mr close branch
+glab mr close username:branch
+glab mr close branch -R another/repo
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

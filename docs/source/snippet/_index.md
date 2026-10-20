@@ -1,0 +1,33 @@
+# `glab snippet`
+
+Create snippets.
+
+## Synopsis
+
+Snippets store and share small pieces of code or text. A snippet can
+belong to a project, or to your personal account when you pass
+`--personal`.
+
+To view and edit existing snippets, use the GitLab UI or `glab api` with the [Project snippets API](https://docs.gitlab.com/api/project_snippets/) or personal [Snippets API](https://docs.gitlab.com/api/snippets/).
+
+## Examples
+
+```console
+glab snippet create --title "Title of the snippet" --filename "main.go"
+```
+
+## Options
+
+```plaintext
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```
+
+## Subcommands
+
+- [`create`](create.md)

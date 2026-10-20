@@ -1,0 +1,50 @@
+# `glab stack save`
+
+Save your changes as a new diff. (EXPERIMENTAL)
+
+## Synopsis
+
+Adds a new diff to the end of the stack. It becomes a new merge request the next time you run `glab stack sync`.
+
+To add your changes to the diff you have checked out instead, use `glab stack amend`.
+
+This feature is an experiment and is not ready for production use.
+It might be unstable or removed at any time.
+For more information, see
+<https://docs.gitlab.com/policy/development_stages_support/>.
+
+```plaintext
+glab stack save [flags]
+```
+
+## Examples
+
+```console
+# Save currently staged changes as diff with description
+glab stack save -m "added a function"
+
+# Add specified file to staged changes and save diff
+glab stack save added_file
+
+# Add all tracked files to staged changes and save diff
+glab stack save -a -m "added a function to exisiting file"
+
+# Add all tracked and untracked files to staged changes and save diff
+glab stack save . -m "added new file"
+```
+
+## Options
+
+```plaintext
+  -a, --all                  Automatically stage modified and deleted tracked files.
+  -d, --description string   Description of the change.
+  -m, --message string       Alias for the description flag.
+      --no-verify            Bypass the pre-commit and commit-msg hooks of git-commit(1).
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

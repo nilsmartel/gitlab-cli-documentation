@@ -1,0 +1,35 @@
+# `glab stack switch`
+
+Switch between stacks. (EXPERIMENTAL)
+
+## Synopsis
+
+If you do not provide a stack name, the command shows a list of stacks for you to choose from.
+
+After you switch, use `glab stack move` to check out a diff in the new stack.
+
+This feature is an experiment and is not ready for production use.
+It might be unstable or removed at any time.
+For more information, see
+<https://docs.gitlab.com/policy/development_stages_support/>.
+
+```plaintext
+glab stack switch [stack-name] [flags]
+```
+
+## Examples
+
+```console
+# Interactively pick from the list of available stacks.
+glab stack switch
+
+# Switch to a specific stack by name.
+glab stack switch <stack-name>
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

@@ -1,0 +1,47 @@
+# `glab stack reorder`
+
+Reorder a stack of diffs. (EXPERIMENTAL)
+
+## Synopsis
+
+Opens an editor with one diff per line, so you can rearrange them.
+
+When you save and close the file, each diff's branch is rebased onto the branch of the diff now before it, and each moved diff's merge request is retargeted to match. The rebased branches are not pushed automatically, so run `glab stack sync` to force-push them and replace the old commits on GitLab.
+
+If a rebase hits a conflict, resolve it, run `git rebase --continue`, and then run `glab stack reorder --continue`. To restore the original order instead, run `glab stack reorder --abort`.
+
+This feature is an experiment and is not ready for production use.
+It might be unstable or removed at any time.
+For more information, see
+<https://docs.gitlab.com/policy/development_stages_support/>.
+
+```plaintext
+glab stack reorder [flags]
+```
+
+## Examples
+
+```console
+# Reorder the stack by choosing a new branch order in your editor
+glab stack reorder
+
+# Continue a reorder after resolving a conflict
+glab stack reorder --continue
+
+# Abort a reorder and restore the original branch order
+glab stack reorder --abort
+```
+
+## Options
+
+```plaintext
+      --abort      Abort a reorder and restore original branch state.
+      --continue   Continue a reorder after resolving conflicts.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

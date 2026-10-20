@@ -1,0 +1,46 @@
+# `glab runner-controller token rotate`
+
+Rotate a token for a runner controller. (EXPERIMENTAL)
+
+## Synopsis
+
+Replaces the current token with a new one. Store the new token value
+securely before closing the terminal. You cannot retrieve the token
+again. Prompts for confirmation before rotation. Use `--force`
+to skip the confirmation prompt in non-interactive contexts.
+
+This feature is an experiment and is not ready for production use.
+It might be unstable or removed at any time.
+For more information, see
+<https://docs.gitlab.com/policy/development_stages_support/>.
+
+```plaintext
+glab runner-controller token rotate <controller-id> <token-id> [flags]
+```
+
+## Examples
+
+```console
+# Rotate token 1 for runner controller 42 (with confirmation prompt)
+glab runner-controller token rotate 42 1
+
+# Rotate without confirmation
+glab runner-controller token rotate 42 1 --force
+
+# Rotate and output as JSON
+glab runner-controller token rotate 42 1 --force --output json
+```
+
+## Options
+
+```plaintext
+  -f, --force           Skip confirmation prompt.
+      --jq string       Filter JSON output with a jq expression.
+  -F, --output string   Format output as: text, json. (default "text")
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```

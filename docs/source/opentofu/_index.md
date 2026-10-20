@@ -1,0 +1,35 @@
+# `glab opentofu`
+
+Work with the OpenTofu or Terraform integration.
+
+## Synopsis
+
+Manage OpenTofu and Terraform state stored in the GitLab-managed
+state backend.
+
+Initialize a working directory against a GitLab-managed state, and
+list, lock, unlock, download, or delete states.
+
+## Aliases
+
+```plaintext
+terraform
+tf
+```
+
+## Options
+
+```plaintext
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```
+
+## Subcommands
+
+- [`init`](init.md)
+- [`state`](state/_index.md)

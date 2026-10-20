@@ -1,0 +1,32 @@
+# `glab artifact-registry`
+
+Authenticate with GitLab Artifact Registry. (EXPERIMENTAL)
+
+## Synopsis
+
+Exchange a GitLab credential for a short-lived Artifact Registry access
+token, either to check your access, to hand the token to a caller, or to
+configure a package manager to authenticate against the registry.
+
+This feature is an experiment and is not ready for production use.
+It might be unstable or removed at any time.
+For more information, see
+<https://docs.gitlab.com/policy/development_stages_support/>.
+
+## Aliases
+
+```plaintext
+ar
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```
+
+## Subcommands
+
+- [`get-token`](get-token.md)
+- [`login`](login.md)
+- [`status`](status.md)

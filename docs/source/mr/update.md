@@ -1,0 +1,81 @@
+# `glab mr update`
+
+Update a merge request.
+
+## Synopsis
+
+Defaults to the currently checked-out branch. Use `--fill` to
+automatically fill the title and description from the commit history.
+
+`--attach` uploads a file and references it at the end of the description. Repeat the flag for more than one file, or pass `-` to read the file from standard input. Without `--description` the references are added to the description the merge request already has, instead of replacing it.
+
+The `--attach` flag is an experiment. It might be
+unstable or removed at any time, and is not ready for production use.
+For more information, see
+<https://docs.gitlab.com/policy/development_stages_support/>.
+
+```plaintext
+glab mr update [<id> | <branch>] [flags]
+```
+
+## Examples
+
+```console
+# Mark a merge request as ready
+glab mr update 23 --ready
+
+# Mark a merge request as draft
+glab mr update 23 --draft
+
+# Updates the merge request for the current branch
+glab mr update --draft
+
+# Select the open merge request when a branch also has merged requests
+glab mr update feature-branch --state opened --ready
+
+# Update merge request with commit information
+glab mr update 23 --fill --fill-commit-body --yes
+
+# Read the description from a file
+glab mr update 23 --description-file description.md
+
+# Read the description from standard input
+cat description.md | glab mr update 23 --description-file -
+
+# Add a screenshot to the existing description
+glab mr update 23 --attach ./screenshot.png
+```
+
+## Options
+
+```plaintext
+  -a, --assignee strings          Assign users via username. Prefix with '!' or '-' to remove from existing assignees, '+' to add. Otherwise, replace existing assignees with given users. Multiple usernames can be comma-separated or specified by repeating the flag.
+      --attach stringArray        (EXPERIMENTAL) Upload a file and reference it at the end of the description. Use "-" to read the file from standard input. Repeat the flag to attach multiple files.
+  -d, --description string        Merge request description. Set to "-" to open an editor.
+      --description-file string   Read the merge request description from a file. Use "-" to read from standard input.
+      --draft                     Mark merge request as a draft.
+  -f, --fill                      Do not prompt for title or body, and just use commit info.
+      --fill-commit-body          Fill body with each commit body when multiple commits. Can only be used with --fill.
+  -l, --label strings             Add labels.
+      --lock-discussion           Lock discussion on merge request.
+  -m, --milestone string          Title of the milestone to assign. Set to "" or 0 to unassign.
+  -r, --ready                     Mark merge request as ready to be reviewed and merged.
+      --remove-source-branch      Toggles the removal of the source branch on merge.
+      --reviewer strings          Request review from users by their usernames. Prefix with '!' or '-' to remove from existing reviewers, '+' to add. Otherwise, replace existing reviewers with given users. Multiple usernames can be comma-separated or specified by repeating the flag.
+      --squash-before-merge       Toggles the option to squash commits into a single commit when merging.
+      --state string              Filter by state when selecting a merge request by branch: opened, closed, merged, locked, any. Ignored for IDs and URLs. (default "any")
+      --target-branch string      Set target branch.
+  -t, --title string              Title of merge request.
+      --unassign                  Unassign all users.
+  -u, --unlabel strings           Remove labels.
+      --unlock-discussion         Unlock discussion on merge request.
+      --wip                       Mark merge request as a work in progress. Alternative to --draft.
+  -y, --yes                       Skip confirmation prompt.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

@@ -1,0 +1,29 @@
+# `glab security config`
+
+Configure security scan profiles for a project. (EXPERIMENTAL)
+
+## Synopsis
+
+Enable, disable, or inspect security scan profiles for a project.
+
+A profile bundles a set of security scans, such as SAST, secret
+detection, dependency scanning, or container scanning, or post-scan
+processing on given scans, like dependency scanning auto remediation.
+
+This feature is an experiment and is not ready for production use.
+It might be unstable or removed at any time.
+For more information, see
+<https://docs.gitlab.com/policy/development_stages_support/>.
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```
+
+## Subcommands
+
+- [`disable`](disable.md)
+- [`enable`](enable.md)
+- [`status`](status.md)

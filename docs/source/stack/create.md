@@ -1,0 +1,38 @@
+# `glab stack create`
+
+Create a new stack. (EXPERIMENTAL)
+
+## Synopsis
+
+The stack starts empty, and the other `glab stack` commands act on it until you switch. The branch you have checked out becomes its base branch, which the first merge request targets, so push it to the remote before you run `glab stack sync`. To add diffs, use `glab stack save`.
+
+This command adds metadata to your `./.git/stacked` directory.
+
+This feature is an experiment and is not ready for production use.
+It might be unstable or removed at any time.
+For more information, see
+<https://docs.gitlab.com/policy/development_stages_support/>.
+
+```plaintext
+glab stack create [flags]
+```
+
+## Aliases
+
+```plaintext
+new
+```
+
+## Examples
+
+```console
+glab stack create cool-new-feature
+glab stack new cool-new-feature
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

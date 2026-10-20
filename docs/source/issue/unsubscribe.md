@@ -1,0 +1,32 @@
+# `glab issue unsubscribe`
+
+Unsubscribe from an issue.
+
+## Synopsis
+
+You no longer receive notifications about updates to the issue.
+
+```plaintext
+glab issue unsubscribe <id> [flags]
+```
+
+## Aliases
+
+```plaintext
+unsub
+```
+
+## Examples
+
+```console
+glab issue unsubscribe 123
+glab issue unsub 123
+glab issue unsubscribe https://gitlab.com/OWNER/REPO/-/issues/123
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

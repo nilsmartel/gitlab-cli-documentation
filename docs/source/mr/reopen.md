@@ -1,0 +1,38 @@
+# `glab mr reopen`
+
+Reopen a merge request.
+
+## Synopsis
+
+You can reopen multiple merge requests by passing multiple IDs
+or branch names.
+
+```plaintext
+glab mr reopen [<id>... | <branch>...] [flags]
+```
+
+## Aliases
+
+```plaintext
+open
+```
+
+## Examples
+
+```console
+# Reopen merge request 123
+glab mr reopen 123
+
+# Reopen merge requests 123, 456, and 789
+glab mr reopen 123 456 789
+
+# Reopen merge requests from branches branch-1 and branch-2
+glab mr reopen branch-1 branch-2
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

@@ -1,0 +1,38 @@
+# `glab security config status`
+
+Show the status of a security scan profile for a project. (EXPERIMENTAL)
+
+## Synopsis
+
+Show whether a security scan profile is attached to a project and its
+current scan status.
+
+This feature is an experiment and is not ready for production use.
+It might be unstable or removed at any time.
+For more information, see
+<https://docs.gitlab.com/policy/development_stages_support/>.
+
+```plaintext
+glab security config status <profile> [flags]
+```
+
+## Examples
+
+```console
+# Show dependency scanning status for the current project
+$ glab security config status dependency_scanning
+
+# Show SAST status for a specific project
+$ glab security config status sast -R gitlab-org/cli
+
+# Show auto-remediation status for vulnerable dependencies
+$ glab security config status dependency_scanning_post_processing
+
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

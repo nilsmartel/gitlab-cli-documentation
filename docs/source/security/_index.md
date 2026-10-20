@@ -1,0 +1,29 @@
+# `glab security`
+
+Manage GitLab security scan profiles for a project. (EXPERIMENTAL)
+
+## Synopsis
+
+Use these commands to enable, disable, or inspect the security scans
+attached to a project.
+
+This feature is an experiment and is not ready for production use.
+It might be unstable or removed at any time.
+For more information, see
+<https://docs.gitlab.com/policy/development_stages_support/>.
+
+## Options
+
+```plaintext
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```
+
+## Subcommands
+
+- [`config`](config/_index.md)

@@ -1,0 +1,28 @@
+# `glab gpg-key add`
+
+Add a GPG key to your GitLab account.
+
+## Synopsis
+
+Creates a new GPG key owned by the currently authenticated user.
+
+```plaintext
+glab gpg-key add [key-file] [flags]
+```
+
+## Examples
+
+```console
+# Read GPG key from stdin and upload.
+glab gpg-key add
+
+# Read GPG key from specified key file and upload.
+glab gpg-key add ~/.gnupg/pubkey.asc
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

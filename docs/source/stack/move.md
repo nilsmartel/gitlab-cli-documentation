@@ -1,0 +1,31 @@
+# `glab stack move`
+
+Move to a specific diff in the stack. (EXPERIMENTAL)
+
+## Synopsis
+
+Shows a list of the diffs in the stack, and checks out the branch of the diff you select.
+
+To work on a different stack, run `glab stack switch` first.
+
+This feature is an experiment and is not ready for production use.
+It might be unstable or removed at any time.
+For more information, see
+<https://docs.gitlab.com/policy/development_stages_support/>.
+
+```plaintext
+glab stack move [flags]
+```
+
+## Examples
+
+```console
+glab stack move
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

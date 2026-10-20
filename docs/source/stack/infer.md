@@ -1,0 +1,48 @@
+# `glab stack infer`
+
+Add diffs to a stack based on a range of commits. (EXPERIMENTAL)
+
+## Synopsis
+
+Opens an editor with the commits in the range for you to choose from.
+
+When you save and close the file, the command creates one diff for each commit listed in the file and appends them to the stack. If there's no stack to add them to, the command creates one first.
+
+This feature is an experiment and is not ready for production use.
+It might be unstable or removed at any time.
+For more information, see
+<https://docs.gitlab.com/policy/development_stages_support/>.
+
+```plaintext
+glab stack infer <revision-range> [flags]
+```
+
+## Examples
+
+```console
+# Commit range syntax is similar to "git rev-list".
+# The start of the range must be a branch name (not a relative ref like HEAD~5).
+
+# Add diffs from the commits between main and the current branch
+glab stack infer main..HEAD
+
+# Add diffs from the commits on a feature branch since it diverged from develop
+glab stack infer develop..HEAD
+
+# If there's no stack to add the diffs to, create one with a specific name
+glab stack infer --name feature-stack main..HEAD
+
+```
+
+## Options
+
+```plaintext
+  -n, --name string   Name for the new stack (used when creating a stack)
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

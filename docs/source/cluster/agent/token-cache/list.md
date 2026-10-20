@@ -1,0 +1,37 @@
+# `glab cluster agent token-cache list`
+
+List cached GitLab Agent tokens.
+
+## Synopsis
+
+By default, shows tokens from both keyring and filesystem cache.
+Use `--keyring=false` or `--filesystem=false` to filter by cache type.
+
+```plaintext
+glab cluster agent token-cache list [flags]
+```
+
+## Examples
+
+```console
+# List all cached agent tokens
+glab cluster agent token-cache list
+
+# List tokens from filesystem cache only
+glab cluster agent token-cache list --keyring=false
+```
+
+## Options
+
+```plaintext
+      --agent int64Slice   Filter by specific agent IDs. (default [])
+      --filesystem         Include tokens from filesystem cache. (default true)
+      --keyring            Include tokens from keyring cache. (default true)
+  -R, --repo string        Select another repository using the OWNER/REPO format.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```

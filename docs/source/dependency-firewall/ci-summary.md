@@ -1,0 +1,41 @@
+# `glab dependency-firewall ci-summary`
+
+Summarize Dependency Firewall activity from the CI log. (EXPERIMENTAL)
+
+## Synopsis
+
+Read `.gitlab/df/ci-log.json` and print blocked and flagged packages
+recorded during a `glab dependency-firewall` run.
+
+The log is read from the current working directory. Run this command from
+the same directory as the `glab dependency-firewall` run that wrote the
+log, otherwise no activity is reported.
+
+| Exit code | Meaning |
+|-----------|---------|
+| `0` | No blocked entries in the log (allow-only or warnings). |
+| `1` | The log could not be read. |
+| `3` | At least one entry in the log is blocked. |
+
+This feature is an experiment and is not ready for production use.
+It might be unstable or removed at any time.
+For more information, see
+<https://docs.gitlab.com/policy/development_stages_support/>.
+
+```plaintext
+glab dependency-firewall ci-summary [flags]
+```
+
+## Examples
+
+```console
+# Show blocked and flagged packages from the last firewall run
+glab dependency-firewall ci-summary
+
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```

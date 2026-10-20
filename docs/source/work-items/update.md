@@ -1,0 +1,68 @@
+# `glab work-items update`
+
+Update work items in a project or group. (EXPERIMENTAL)
+
+## Synopsis
+
+The command uses your repository context to detect scope automatically.
+
+Use `--group` to target a group or subgroup. `--group` and `--repo` are mutually exclusive.
+
+`--attach` uploads a file and references it at the end of the description. Repeat the flag for more than one file, or pass `-` to read the file from standard input. Without `--description` the references are added to the description the work item already has, instead of replacing it. Uploads are project-scoped, so `--attach` cannot be combined with `--group`.
+
+This feature is an experiment and is not ready for production use.
+It might be unstable or removed at any time.
+For more information, see
+<https://docs.gitlab.com/policy/development_stages_support/>.
+
+```plaintext
+glab work-items update <iid> [flags]
+```
+
+## Examples
+
+```console
+# Update a work item in current project
+glab work-items update 42 --description "this issue tracks a new feature"
+
+# Update a work item in a group
+glab work-items update 40 --group MYGROUP --description "this epic tracks a new feature"
+
+# Read the description from a file
+glab work-items update 42 --description-file description.md
+
+# Read the description from standard input
+cat description.md | glab work-items update 42 --description-file -
+
+# Add a screenshot to the existing description
+glab work-items update 42 --attach ./screenshot.png
+
+# Move a work item to another iteration
+glab work-items update 42 --iteration 123
+
+```
+
+## Options
+
+```plaintext
+  -a, --assignee strings          Update the work item assignee with the supplied GitLab usernames.
+      --attach stringArray        (EXPERIMENTAL) Upload a file and reference it at the end of the description. Use "-" to read the file from standard input. Repeat the flag to attach multiple files.
+  -d, --description string        Update the description for the work item.
+      --description-file string   Read the work item description from a file. Use "-" to read from standard input.
+      --duedate string            Update the due date for the work item.
+  -g, --group string              Update work items for a group or subgroup.
+      --iteration int             Move the work item to the iteration with this ID.
+      --jq string                 Filter JSON output with a jq expression.
+  -m, --milestone string          Update the work item milestone with the title or ID.
+  -F, --output string             Format output as: text, json. (default "text")
+  -R, --repo string               Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+      --startdate string          Update the start date for the work item.
+  -t, --title string              Update the title for the work item.
+  -w, --weight int                Update the weight value for the work item.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```

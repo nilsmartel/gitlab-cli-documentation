@@ -1,0 +1,134 @@
+# `glab mr note create`
+
+Create a comment or discussion on a merge request. (EXPERIMENTAL)
+
+## Synopsis
+
+Add a comment to a merge request. By default, the command creates the comment
+as a new discussion thread.
+
+Use `--resolvable=false` to create a non-resolvable note instead.
+Non-resolvable notes do not block merging when the project requires
+**All threads must be resolved**. Use this option for automation or status
+updates that do not need a human to resolve them.
+
+Use `--internal` to create an internal note, which only project members can view. A reply to an internal thread is itself internal. When combined with `--reply`, `--internal` checks the target thread's visibility and fails if the thread is public. Replying to an internal thread without `--internal` still produces an internal reply.
+
+Use `--reply` to add a note to an existing discussion thread instead of
+starting a new one. The value can be a full discussion ID or a unique
+prefix of at least 8 characters. Find discussion IDs with
+`glab mr note list`. Human-readable output uses
+eight characters before the ellipsis, for example
+`[discussion: abc12345…]`; pass
+only those characters, for example `--reply abc12345`. To get a
+full ID, use the `id` field of each discussion object:
+`glab mr note list -F json | jq -r '.[].id'`.
+
+Use `--file` to place a diff comment on a specific file in the latest
+merge request diff version. Combine with `--line` (new side) or
+`--old-line` (old/removed side) to target a specific line. Omit
+both flags for a file-level comment.
+
+To add the comment to a pending review instead of publishing it immediately, use `glab mr note draft create`.
+
+The flag rules are:
+
+- `--line` and `--old-line` require `--file`, and
+cannot be used together.
+- `--file`, `--reply`, and `--unique` are mutually
+exclusive.
+- `--resolvable=false` cannot be combined with `--reply`
+or `--file` (and by extension `--line` or
+`--old-line`).
+- `--internal` cannot be combined with `--file`
+(and by extension `--line` or
+`--old-line`), nor with `--resolvable=true` unless
+`--reply` is also given.
+- `--attach` and `--unique` are mutually exclusive,
+because every upload gets a fresh URL and so an attached comment can
+never match an existing one.
+
+`--attach` uploads a file and references it at the end of the comment. Repeat the flag for more than one file, or pass `-` to read the file from standard input. An attachment is content on its own, so a comment with only `--attach` neither prompts nor reads a body from stdin.
+
+This feature is an experiment and is not ready for production use.
+It might be unstable or removed at any time.
+For more information, see
+<https://docs.gitlab.com/policy/development_stages_support/>.
+
+```plaintext
+glab mr note create [<id> | <branch>] [flags]
+```
+
+## Examples
+
+```console
+# Add a comment to merge request 123
+glab mr note create 123 -m "Looks good to me!"
+
+# Add a comment to the current branch's merge request
+glab mr note create -m "LGTM"
+
+# Open editor to compose the message
+glab mr note create 123
+
+# Pipe from stdin
+echo "LGTM" | glab mr note create 123
+
+# Read the body from a file
+glab mr note create 123 < plan.md
+
+# Skip if already posted
+glab mr note create 123 -m "LGTM" --unique
+
+# Create a non-resolvable note, for example for bot or CI status updates
+glab mr note create 123 -m "Build status: green" --resolvable=false
+
+# Create an internal note, visible only to project members
+glab mr note create 123 -m "Rotating the leaked token now." --internal
+
+# Reply to an internal thread, refusing to post if that thread is public
+glab mr note create 123 --reply abc12345 --internal -m "Patch is ready."
+
+# Reply to an existing discussion thread
+glab mr note create 123 --reply abc12345 -m "I agree!"
+
+# Add a diff comment on line 42 of main.go
+glab mr note create 123 --file main.go --line 42 -m "Needs refactoring"
+
+# Add a diff comment on lines 10-15 (multiline range)
+glab mr note create 123 --file main.go --line 10:15 -m "Extract this block"
+
+# Add a diff comment on a removed line (old side)
+glab mr note create 123 --file main.go --old-line 7 -m "Why was this removed?"
+
+# Add a file-level diff comment (no line specified)
+glab mr note create 123 --file main.go -m "General comment on this file"
+
+# Attach a screenshot alongside the message
+glab mr note create 123 -m "Renders wrong here." --attach ./screenshot.png
+
+# Attach an image piped from the clipboard
+pngpaste - | glab mr note create 123 --attach -
+
+```
+
+## Options
+
+```plaintext
+      --attach stringArray   (EXPERIMENTAL) Upload a file and reference it at the end of the comment. Use "-" to read the file from standard input. Repeat the flag to attach multiple files.
+      --file string          File path for a diff comment, like <path/to/file>. Targets the latest merge request diff version.
+      --internal             Create the note as an internal note, visible only to project members.
+      --line string          Line in the new version. A single line number, like 42, or a range, like 10:15.
+  -m, --message string       Comment or note message.
+      --old-line int         Line in the old version, for commenting on a removed line.
+      --reply string         Reply to an existing discussion. Accepts a full discussion ID or a unique prefix of at least 8 characters.
+      --resolvable           Create the note as a resolvable discussion thread. Set to false to create a non-resolvable note. (default true)
+      --unique               Don't create a note if a note with the same body already exists. Reads all merge request comments first.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

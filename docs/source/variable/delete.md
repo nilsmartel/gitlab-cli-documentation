@@ -1,0 +1,41 @@
+# `glab variable delete`
+
+Delete a variable for a project or group.
+
+## Synopsis
+
+Deletes a variable by key. Use `--scope` to target a
+variable in a specific environment, or `--group` to delete a group
+variable instead.
+
+```plaintext
+glab variable delete <key> [flags]
+```
+
+## Aliases
+
+```plaintext
+remove
+```
+
+## Examples
+
+```console
+glab variable delete VAR_NAME
+glab variable delete VAR_NAME --scope=prod
+glab variable delete VARNAME -g mygroup
+```
+
+## Options
+
+```plaintext
+  -g, --group string   Delete variable from a group.
+  -s, --scope string   The 'environment_scope' of the variable. Options: all (*), or specific environments. (default "*")
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help          Show help for this command.
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```

@@ -1,0 +1,64 @@
+# `glab work-items create`
+
+Create work items in a project or group. (EXPERIMENTAL)
+
+## Synopsis
+
+Use `--type` to specify the kind of work item to create.
+The command uses your repository context to detect scope automatically.
+
+`--attach` uploads a file and references it at the end of the description. Repeat the flag for more than one file, or pass `-` to read the file from standard input. Uploads are project-scoped, so `--attach` cannot be combined with `--group`.
+
+This feature is an experiment and is not ready for production use.
+It might be unstable or removed at any time.
+For more information, see
+<https://docs.gitlab.com/policy/development_stages_support/>.
+
+```plaintext
+glab work-items create [flags]
+```
+
+## Examples
+
+```console
+# Create a work item in the current project
+glab work-items create --type issue
+
+# Create a work item in a group
+glab work-items create --type epic --group my-group
+
+# Read the description from a file
+glab work-items create --type issue --title "Add feature" --description-file description.md
+
+# Read the description from standard input
+cat description.md | glab work-items create --type issue --title "Add feature" --description-file -
+
+# Attach a screenshot to the description
+glab work-items create --type issue --title "Add feature" --attach ./screenshot.png
+
+# Create a work item in an iteration
+glab work-items create --type issue --title "Add feature" --iteration 123
+
+```
+
+## Options
+
+```plaintext
+      --attach stringArray        (EXPERIMENTAL) Upload a file and reference it at the end of the description. Use "-" to read the file from standard input. Repeat the flag to attach multiple files.
+  -c, --confidential              Mark work item confidential.
+  -d, --description string        Description of the work item. Set to "-" to open an editor.
+      --description-file string   Read the work item description from a file. Use "-" to read from standard input.
+  -g, --group string              Create work items for a group or subgroup.
+      --iteration int             Add the work item to the iteration with this ID.
+      --jq string                 Filter JSON output with a jq expression.
+  -F, --output string             Format output as: text, json. (default "text")
+  -R, --repo string               Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+  -t, --title string              Add a title for the work item.
+  -T, --type string               Type of work item (epic, incident, issue, key_result, objective, requirement, task, test_case, ticket).
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```

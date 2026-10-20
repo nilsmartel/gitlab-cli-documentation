@@ -1,0 +1,44 @@
+# `glab dependency-firewall`
+
+Configure and monitor GitLab Dependency Firewall for local package managers. (EXPERIMENTAL)
+
+## Synopsis
+
+Commands to configure GitLab Dependency Firewall for local package
+managers, run local package managers with a summary of blocked or
+flagged packages, and view activity during the current session.
+
+This feature is an experiment and is not ready for production use.
+It might be unstable or removed at any time.
+For more information, see
+<https://docs.gitlab.com/policy/development_stages_support/>.
+
+## Aliases
+
+```plaintext
+df
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```
+
+## Subcommands
+
+- [`bundle`](bundle.md)
+- [`cargo`](cargo.md)
+- [`ci-summary`](ci-summary.md)
+- [`gem`](gem.md)
+- [`gradle`](gradle.md)
+- [`maven`](maven.md)
+- [`npm`](npm.md)
+- [`package`](package.md)
+- [`pip`](pip.md)
+- [`pipenv`](pipenv.md)
+- [`pnpm`](pnpm.md)
+- [`poetry`](poetry.md)
+- [`twine`](twine.md)
+- [`uv`](uv.md)
+- [`yarn`](yarn.md)
